@@ -154,3 +154,57 @@ if (form) {
         });
     });
 }
+
+// ============================================================
+// ДИНАМИЧЕСКАЯ ЗАМЕНА ПО ПАРАМЕТРУ ?brand=
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Получаем параметр brand из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const brand = urlParams.get('brand');
+
+    // Если параметр brand есть
+    if (brand) {
+        const brandName = brand.charAt(0).toUpperCase() + brand.slice(1); // Zeekr
+
+        // === МЕНЯЕМ КАРТИНКУ ХИРО ===
+        const heroCar = document.querySelector('.hero-bg-car');
+        if (heroCar) {
+            heroCar.style.backgroundImage = 'url("img/1-2.png")';
+        }
+
+        // === МЕНЯЕМ ЗАГОЛОВОК H1 ===
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            // Сохраняем первую часть "Ремонт электромобилей" и добавляем бренд
+            const baseText = 'Ремонт электромобилей';
+            heroTitle.innerHTML = `
+                ${baseText} <br>
+                <span class="highlight">${brandName} в Москве</span>
+            `;
+        }
+
+        // === МЕНЯЕМ META TITLE ===
+        document.title = `KEY2CAR — Ремонт электромобилей ${brandName} в Москве`;
+
+        // === МЕНЯЕМ HERO BADGE (добавляем бренд) ===
+        const heroBadge = document.querySelector('.hero-badge');
+        if (heroBadge) {
+            const existingText = heroBadge.textContent.trim();
+            // Добавляем бренд в бейдж, если его там нет
+            if (!existingText.includes(brandName)) {
+                const link = heroBadge.querySelector('a');
+                if (link) {
+                    link.textContent = `4.6 на Яндекс Картах · 351 отзыв · ${brandName}`;
+                }
+            }
+        }
+
+        // === МЕНЯЕМ URL В БРАУЗЕРЕ (без перезагрузки) ===
+        // Убираем параметр из адресной строки, чтобы не было дублей при переходе
+        if (window.history && window.history.replaceState) {
+            const newUrl = window.location.pathname + window.location.hash;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    }
+});
