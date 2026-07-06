@@ -248,6 +248,34 @@ body {
     color: #FFFFFF;
 }
 
+/* MAX — иконка в виде SVG */
+.header-messengers .max {
+    background: #1c41e6;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 6px;
+}
+
+.header-messengers .max svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+    fill: #FFFFFF;
+}
+
+.header-messengers .max:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-color: var(--gold);
+}
+
 .header-messengers a:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -414,6 +442,18 @@ body {
 .mobile-menu .mobile-messengers .tg {
     background: #26A5E4;
     color: #FFFFFF;
+}
+
+.mobile-menu .mobile-messengers .max {
+    background: #1A1A2E;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px;
+}
+
+.mobile-menu .mobile-messengers .max svg {
+    width: 28px;
+    height: 28px;
+    fill: #FFFFFF;
 }
 
 .mobile-overlay {
@@ -1599,6 +1639,24 @@ body {
     box-shadow: 0 4px 30px rgba(245, 192, 0, 0.5);
 }
 
+/* MAX — иконка в фиксированном виджете */
+.fixed-widget .widget-max {
+    background: var(--gradient-gold);
+    color: #0B0B0C;
+    padding: 10px;
+}
+
+.fixed-widget .widget-max svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    fill: #0B0B0C;
+}
+
+.fixed-widget .widget-max:hover {
+    box-shadow: 0 4px 30px rgba(245, 192, 0, 0.5);
+}
+
 @media (max-width: 480px) {
     .fixed-widget {
         bottom: 16px;
@@ -1610,6 +1668,15 @@ body {
         width: 48px;
         height: 48px;
         font-size: 20px;
+    }
+
+    .fixed-widget .widget-max {
+        padding: 8px;
+    }
+
+    .fixed-widget .widget-max svg {
+        width: 28px;
+        height: 28px;
     }
 }
 
@@ -1647,6 +1714,15 @@ body {
         width: 30px;
         height: 30px;
         font-size: 13px;
+    }
+    .header-messengers .max {
+        width: 30px;
+        height: 30px;
+        padding: 4px;
+    }
+    .header-messengers .max svg {
+        width: 18px;
+        height: 18px;
     }
     .hero {
         padding: 40px 0 0;
